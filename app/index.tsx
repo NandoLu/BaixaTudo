@@ -11,8 +11,8 @@ export default function Index() {
       <Text style={styles.title}>BAIXATUDO</Text>
       <View style={styles.searchContainer}>
         <TextInput style={styles.input} placeholder="Pesquisar..." placeholderTextColor="#fff"/>
-        <TouchableOpacity style={styles.button}>
-          <MaterialIcons name="search" size={24} color="#fff" />
+        <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+          <MaterialIcons name="search" size={26} color="#121212" style={styles.buttonIcon} />
         </TouchableOpacity>
       </View>
     </View>

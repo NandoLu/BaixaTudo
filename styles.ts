@@ -5,46 +5,48 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#1a1a1a", // Fundo escuro
+    backgroundColor: "#121212", // Fundo mais elegante
+    padding: 20,
+  },
+  logo: {
+    width: 160,
+    height: 160,
+    resizeMode: "contain",
+    marginBottom: 20,
+    borderRadius: 20,
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+    color: "#c1ff72",
+    textAlign: "center",
+    marginBottom: 20,
+    textTransform: "uppercase", // Deixa em letras maiúsculas automaticamente
   },
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
+    backgroundColor: "#1e1e1e", // Fundo mais suave para a barra de pesquisa
+    borderRadius: 30,
+    paddingHorizontal: 10,
+    elevation: 5, // Sombras no Android
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 4 },
   },
   input: {
-    borderWidth: 1,
-    borderColor: "#7ed957", // Cor principal
-    borderRadius: 10, // Bordas arredondadas
-    paddingVertical: 12, // Aumentando a altura
-    paddingHorizontal: 16, // Ajustando o tamanho horizontal
-    width: 250, // Tornando maior
-    backgroundColor: "#333", // Fundo escuro do input
-    color: "#fff", // Texto branco para visibilidade
+    flex: 1,
+    fontSize: 16,
+    color: "#fff",
+    paddingVertical: 14,
+    paddingHorizontal: 12,
   },
   button: {
-    backgroundColor: "#7ed957", // Cor principal
-    paddingVertical: 12, // Igual ao input
-    paddingHorizontal: 16, // Ajustando tamanho
-    borderRadius: 10, // Bordas arredondadas
+    backgroundColor: "#c1ff72",
+    padding: 12,
+    borderRadius: 30,
   },
-  text: {
-    color: "#7ed957", // Cor principal
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  title:{
-    fontSize: 32,
-    fontWeight: "bold", // Deixando em negrito para mais destaque
-    color: "#fff", // Cor branca
-    textAlign: "center", // Centralizando o texto
-    marginBottom: 20, // Espaço extra abaixo do título
-  },
-  logo: {
-    width: 150, // Defina o tamanho da imagem
-    height: 150,
-    resizeMode: "contain", // Mantém a proporção da imagem
-    marginBottom: 20, // Espaço abaixo da logo
-    borderRadius: 15,
+  buttonIcon: {
+    transform: [{ scale: 1.1 }], // Deixa o ícone levemente maior
   },
 });
