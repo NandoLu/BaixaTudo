@@ -38,4 +38,11 @@ export const styles = StyleSheet.create({
     textAlign: "center", // Centralizando o texto
     marginBottom: 20, // Espaço extra abaixo do título
   },
+  logo: {
+    width: 150, // Defina o tamanho da imagem
+    height: 150,
+    resizeMode: "contain", // Mantém a proporção da imagem
+    marginBottom: 20, // Espaço abaixo da logo
+    borderRadius: 15,
+  },
 });
