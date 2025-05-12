@@ -14,20 +14,22 @@ export const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "#c1ff72", // Cor principal
-    borderRadius: 5,
-    padding: 8,
-    width: 200,
+    borderColor: "#7ed957", // Cor principal
+    borderRadius: 10, // Bordas arredondadas
+    paddingVertical: 12, // Aumentando a altura
+    paddingHorizontal: 16, // Ajustando o tamanho horizontal
+    width: 250, // Tornando maior
     backgroundColor: "#333", // Fundo escuro do input
     color: "#fff", // Texto branco para visibilidade
   },
   button: {
-    backgroundColor: "#c1ff72", // Cor principal
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: "#7ed957", // Cor principal
+    paddingVertical: 12, // Igual ao input
+    paddingHorizontal: 16, // Ajustando tamanho
+    borderRadius: 10, // Bordas arredondadas
   },
   text: {
-    color: "#c1ff72", // Cor principal
+    color: "#7ed957", // Cor principal
     fontSize: 18,
     fontWeight: "bold",
   },
