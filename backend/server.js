@@ -10,10 +10,9 @@ app.use(express.json());
 // Rota POST para iniciar o download de músicas
 app.post("/download", (req, res) => {
   const { url } = req.body;
-  console.log("Recebido link para download:", url); // Log para depuração no servidor Render
+  console.log("Recebido link para download (backend):", url); // Log para depuração no servidor Render
 
-  // ATENÇÃO: Ajuste a regex para ser mais abrangente, incluindo 'm.' para mobile
-  // Esta regex deve ser a mesma ou mais permissiva que a do frontend
+  // ATENÇÃO: Esta é a regex CRÍTICA! Ela precisa incluir 'm.'
   if (!url || !url.match(/^(https?:\/\/)?(www\.|m\.)?(youtube\.com|youtu\.be)\/.+$/)) {
     console.error("Validação de URL no backend falhou para:", url); // Log mais específico para depuração
     return res.status(400).json({ error: "URL inválida! Por favor, insira um link válido do YouTube." });
