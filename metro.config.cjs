@@ -1,4 +1,4 @@
-// Este arquivo (metro.config.js) deve estar na raiz do seu projeto Expo.
+// Este arquivo (metro.config.cjs) deve estar na raiz do seu projeto Expo.
 
 const { getDefaultConfig } = require('expo/metro-config');
 const path = require('path'); // Importa o módulo 'path' para manipulação de caminhos
