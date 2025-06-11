@@ -12,13 +12,14 @@ const isValidYouTubeUrl = (url: string) => {
 
 // Função para enviar o link ao backend
 const downloadVideo = async (url: string) => {
+  const serverUrl = "http://192.168.1.234:3000/download"; // Altere para seu IP local
   if (!isValidYouTubeUrl(url)) {
     Alert.alert("Erro", "Link inválido! Insira um link válido do YouTube.");
     return;
   }
 
-  try {
-    const response = await fetch("http://localhost:3000/download", {
+   try {
+    const response = await fetch(serverUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url }),
@@ -27,9 +28,11 @@ const downloadVideo = async (url: string) => {
     const data = await response.json();
     Alert.alert("Download", data.message);
   } catch (error) {
-    Alert.alert("Erro", "Não foi possível baixar o vídeo!");
+    console.log("Erro ao tentar baixar:", error);
+    Alert.alert("Erro", "Não foi possível baixar a música!");
   }
 };
+
 
 export default function Index() {
   const [url, setUrl] = useState("");
