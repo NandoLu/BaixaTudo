@@ -5,11 +5,12 @@ import { StatusBar } from "expo-status-bar";
 import Constants from 'expo-constants'; // Importa Constants para obter a altura da barra de status
 
 import { styles } from "../styles"; // Estilos globais do aplicativo
-import CustomModal from "../components/customModal";
+import CustomModal from "../components/customModal"; // Importa o componente CustomModal
 
 // Função para validar links do YouTube
 const isValidYouTubeUrl = (url: string) => {
-  const regex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+  // Ajuste da regex para incluir explicitamente 'm.youtube.com'
+  const regex = /^(https?:\/\/)?(www\.|m\.)?(youtube\.com|youtu\.be)\/.+$/;
   return regex.test(url);
 };
 
@@ -38,14 +39,22 @@ export default function Index() {
 
   /**
    * Função para enviar o link do YouTube ao backend para download.
-   * @param {string} url - O link do YouTube a ser baixado.
+   * @param {string} rawUrl - O link do YouTube (potencialmente com espaços) a ser baixado.
    */
-  const downloadVideo = async (url: string) => {
+  const downloadVideo = async (rawUrl: string) => {
     // ATENÇÃO: Esta é a URL do seu backend DEPLOYADO no Render!
     const serverUrl = "https://baixatudo-backend.onrender.com/download";
 
+    // Remove quaisquer espaços em branco do início ou do fim da URL antes de validar
+    const cleanedUrl = rawUrl.trim();
+
+    // Log para depuração: verifique o que está sendo passado para a validação
+    console.log("URL limpa para validação:", cleanedUrl);
+    console.log("Resultado da validação (isValidYouTubeUrl):", isValidYouTubeUrl(cleanedUrl));
+
+
     // Valida o link do YouTube antes de enviar ao backend
-    if (!isValidYouTubeUrl(url)) {
+    if (!isValidYouTubeUrl(cleanedUrl)) {
       showModal("Link inválido! Insira um link válido do YouTube.");
       return;
     }
@@ -55,7 +64,7 @@ export default function Index() {
       const response = await fetch(serverUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url: cleanedUrl }), // Envia a URL limpa
       });
 
       // Verifica se a resposta foi bem-sucedida (status 2xx)
@@ -113,7 +122,7 @@ export default function Index() {
           placeholder="Cole um link do YouTube..."
           placeholderTextColor="#aaa"
           value={url}
-          onChangeText={setUrl}
+          onChangeText={setUrl} // Mantém o estado com a URL bruta (com ou sem espaços)
         />
         {/* Botão de download */}
         <TouchableOpacity style={styles.button} activeOpacity={0.7} onPress={() => downloadVideo(url)}>
